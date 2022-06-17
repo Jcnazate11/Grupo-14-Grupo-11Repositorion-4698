@@ -3,7 +3,7 @@
 // Autor: Jeanhela Nazate, Milena Maldonado, Johan Roman y Cristhopher Villamarin 
 // Fecha de creación: 15/05/2022
 // Fecha de modificación: 17/05/2022
-// Github: https://github.com/Jcnazate11/-4698-Grupo14_Nazate_Maldonado_Estructuras/new/main/FuncionFinal
+// Github: https://github.com/Jcnazate11/Grupo-14-Grupo-11Repositorion-4698/edit/main/PARCIAL1/TALLERGRUPAL1/NOTACIONES/posfijo.h
 
 #include <iostream>
 #include "Pila.h"
