@@ -1,6 +1,6 @@
 //Universidad de las Fuerzas Armadas ESPE
 // Enunciado: Notacion infija, prefija, postfija
-// Autor: Jeanhela Nazate, Milena Maldonado, Johan Roman y Cristian Villamarin 
+// Autor: Jeanhela Nazate, Milena Maldonado, Johan Roman y Cristhopher Villamarin 
 // Fecha de creación: 15/05/2022
 // Fecha de modificación: 17/05/2022
 // Github: https://github.com/Jcnazate11/-4698-Grupo14_Nazate_Maldonado_Estructuras/new/main/FuncionFinal
