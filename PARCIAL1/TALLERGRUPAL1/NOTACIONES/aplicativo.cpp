@@ -12,7 +12,17 @@ using namespace std;
 
 int main()
 {
-  string input;
+	 string input;
+	int n;
+	
+	cout<< "Para funciones trignometricas:  (en grados)"<<endl;
+  	cout<<"(s)-> Seno           (t)-> Tangente        (c)-> coseno"<<endl;
+  	cout<< "Para otras funciones: "<<endl;
+  	cout<< "(^)-> Exponente     (r)-> raiz"<<endl;
+  	cout<<"\n\n\n\n";
+do{
+ 
+  
   cout << "Ingrese la expresion infija a convertir: ";
   getline(cin,input);
     
@@ -20,10 +30,13 @@ int main()
   cout << "/////////////////////////////////////////////////////////\n \n";
   cout << "Prefijo: " << Postfijo::infijoAPrefijo(input) << endl;
 
-
+	cout<<"Desea ingresar una nueva notacion si[1] y no[0]"<<endl;
+    cin>>n;
+	}while(n!=0);
     
 
     
 
     return 0;
 }
+
