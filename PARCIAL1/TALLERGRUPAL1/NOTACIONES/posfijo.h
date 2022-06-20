@@ -5,14 +5,19 @@
 // Fecha de modificación: 17/05/2022
 // Github: https://github.com/Jcnazate11/Grupo-14-Grupo-11Repositorion-4698/edit/main/PARCIAL1/TALLERGRUPAL1/NOTACIONES/posfijo.h
 
+#ifndef PROYECTO_POSTFIJO_H
+#define PROYECTO_POSTFIJO_H
+#include <bits/stdc++.h>
 #include <iostream>
 #include "Pila.h"
 #include <cstdlib>
 #include <string>
+#include <string.h>
 #include <stack>
 #include <cmath>
 #include<string.h>
-#define N_operators 7
+#define PI 3.1415
+#define N_operators 10
 
 using namespace std;
 
@@ -22,14 +27,14 @@ class Postfijo {
         static int precedence(const string );
     public:
         Postfijo() = default;
+
         static string infijoAPostfijo(string&);
         static string infijoAPrefijo( string&);
         static void imprimir( );
        
 };
-const string operators[N_operators] = {"+", "-", "*", "/", "%", "^","s"};
-int precedences[N_operators] = {1, 1, 2, 2, 2, 3, 4};
-const double pi = std::acos(-1);
+const string operators[N_operators] = {"+", "-", "*", "/", "%", "^", "r", "s", "t","c"};
+int precedences[N_operators] = {1, 1, 2, 2, 2, 3,3, 4, 4, 4};
 
 string Postfijo::infijoAPostfijo( string &infix)
 {
@@ -54,14 +59,14 @@ string Postfijo::infijoAPostfijo( string &infix)
     		c = infix[i];
     		token.clear();
     		token += c;		
-     
+   //  for ()
     	
     		if ( c == ' ' ) continue;
      
     	//	cout << "Analizando token: '" << c << "'" << endl;
      
     		
-    		if ( c >= '0' && c <= '10' ) {
+    		if ( c >= '0' && c <= '9' ) {
     		//	cout << "\tes numero: pasado a posfijo" << endl << endl;
     			postfix = postfix + " " + c;
     			continue;
@@ -124,7 +129,7 @@ string Postfijo::infijoAPostfijo( string &infix)
     		token.clear();
     		token += c;
      
-    		
+    		//233+
     		if ( c >= '0' && c <= '9' ) {
     			result.push( c - '0' );
     			continue;
@@ -132,9 +137,15 @@ string Postfijo::infijoAPostfijo( string &infix)
      
     	
     		if ( is_operator( token ) ) {
+    			
+   
+    			cout << "\tResultado parciales: " << A << token << B << " = ";
+    			if ( token == "+" ) { //SUMA 
+    				///////////////////////////////////////////////////////////////////////////////////////
     			if ( !result.empty() ) {
     				B = result.top();
     				result.pop();
+    				
     			}
     			else {
     				cout << "Argumentos insuficientes para '" << c << "'" << endl;
@@ -144,38 +155,216 @@ string Postfijo::infijoAPostfijo( string &infix)
     			if ( !result.empty() ) {
     				A = result.top();
     				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     ///////////////////////////////////////////////////////////////////////////////////////////
+    				A += B;
+    				result.push( A );
+    			}
+    			else if ( token == "-" ) { //RESTA
+    /////////////////////////////////////////////////////////////////////////////
+    				 			
+    			if ( !result.empty() ) {
+    				B = result.top();
+    				result.pop();
+    				
     			}
     			else {
     				cout << "Argumentos insuficientes para '" << c << "'" << endl;
     				return 0;
     			}
      
-    			cout << "\tOperar " << A << token << B << " = ";
-    			if ( token == "+" ) {
-    				A += B;
-    				result.push( A );
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
     			}
-    			else if ( token == "-" ) {
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     //////////////////////////////////////////////////////////////////////////////////////
     				A -= B;
     				result.push( A );
     			}
-    			else if ( token == "*" ) {
+    			else if ( token == "*" ) { //MULTIPLICACION
+    	/////////////////////////////////////////////////////////////////////////////////////// 			
+    			if ( !result.empty() ) {
+    				B = result.top();
+    				result.pop();
+    				
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     //////////////////////////////////////////////////////////////////////////////////////////
     				A *= B;
     				result.push( A );
     			}
-    			else if ( token == "/" ) {
+    			else if ( token == "/" ) { //DIVISION
+    		/////////////////////////////////////////////////////////////////////////////////////////
+    			if ( !result.empty() ) {
+    				B = result.top();
+    				result.pop();
+    				
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     				A /= B;
     				result.push( A );
     			}
-    			else if ( token == "%" ) {
+    			else if ( token == "%" ) { //PORCENTAJE
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				 			
+    			if ( !result.empty() ) {
+    				B = result.top();
+    				result.pop();
+    				
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     				A = (int )A % (int )B;
     				result.push( A );
     			}
-    			else if ( token == "^" ) {
+    			else if ( token == "^" ) {//EXPONENTE
+    				/////////////////////////////////////////////////////////////////////////////////
+    				 			
+    			if ( !result.empty() ) {
+    				B = result.top();
+    				result.pop();
+    				
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     //////////////////////////////////////////////////////////////////////////////////////////
     				A = pow(A, B);
     				result.push( A );
+    			}else if ( token == "r" ) {//RAIZ
+    				/////////////////////////////////////////////////////////////////////////////////
+    				 			
+    			if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
     			}
-    		
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+     //////////////////////////////////////////////////////////////////////////////////////////
+    				A = sqrt(A);
+    				result.push( A );
+    			}
+    				else if ( token == "s" ) { //SENO
+    		////////////////////////////////////////////////////////
+    		if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+    			////////////////////////////////////////////////////////////////////////
+    			double rad;
+			
+    				rad= (A*PI)/180;
+  
+    				A= sin(rad);
+    				result.push( rad);
+    			}
+    				else if ( token == "t" ) { //TANGENTE
+    		////////////////////////////////////////////////////////
+    		if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+    			////////////////////////////////////////////////////////////////////////
+    			double rad;
+			
+    				rad= (A*PI)/180;
+  
+    				A= tan(rad);
+    				result.push( rad);
+    			}	else if ( token == "c" ) { // COSENO
+    		////////////////////////////////////////////////////////
+    		if ( !result.empty() ) {
+    				A = result.top();
+    				result.pop();
+    			
+    			}
+    			else {
+    				cout << "Argumentos insuficientes para '" << c << "'" << endl;
+    				return 0;
+    			}
+    			////////////////////////////////////////////////////////////////////////
+    			double rad;
+			
+    				rad= (A*PI)/180;
+  
+    				A= cos(rad);
+    				result.push( rad);
+    			}
+
+    			
     			cout << A << endl;
     		}
     	}
@@ -217,7 +406,7 @@ string Postfijo::infijoAPrefijo( string &infix){
 
 bool Postfijo::is_operator(const string token)
 {
-     	for ( int i = 0; i < N_operators; i++ )
+     	for ( int i = -1; i < N_operators; i++ )
     		if ( operators[i] == token ) 
     			return true;
      
